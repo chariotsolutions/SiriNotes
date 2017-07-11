@@ -52,6 +52,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let object = fetchedResultsController.object(at: indexPath)
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
+                controller.managedObjectContext = fetchedResultsController.managedObjectContext
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -148,5 +149,24 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
          tableView.reloadData()
      }
 
+}
+
+extension MasterViewController: KeyCommandProvider {
+    
+    var shortcutKeys: [UIKeyCommand] {
+        return [
+            UIKeyCommand(input: "n", modifierFlags: .command, action: #selector(handleShortcut(keyCommand:)), discoverabilityTitle: "New Note")
+        ]
+    }
+    
+    @objc func handleShortcut(keyCommand: UIKeyCommand) -> Bool {
+        if keyCommand.input == "n" && keyCommand.modifierFlags == .command {
+            insertNewObject(keyCommand)
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
 

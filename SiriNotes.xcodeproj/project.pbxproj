@@ -23,6 +23,7 @@
 		C8A218701EF160BD00A5C0C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8A2186E1EF160BD00A5C0C0 /* Main.storyboard */; };
 		C8A218721EF160BD00A5C0C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A218711EF160BD00A5C0C0 /* Assets.xcassets */; };
 		C8A218751EF160BD00A5C0C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8A218731EF160BD00A5C0C0 /* LaunchScreen.storyboard */; };
+		C8E34CE11F0FD29C008DD73D /* SiriSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E34CE01F0FD29C008DD73D /* SiriSplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		C8A218711EF160BD00A5C0C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8A218741EF160BD00A5C0C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8A218761EF160BD00A5C0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8E34CE01F0FD29C008DD73D /* SiriSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriSplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				C8A218761EF160BD00A5C0C0 /* Info.plist */,
 				C8A218671EF160BD00A5C0C0 /* SiriNotes.xcdatamodeld */,
 				C89B09B31EF1A9F0003CA794 /* DatabaseHelper.swift */,
+				C8E34CE01F0FD29C008DD73D /* SiriSplitViewController.swift */,
 			);
 			path = SiriNotes;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8E34CE11F0FD29C008DD73D /* SiriSplitViewController.swift in Sources */,
 				C8A218691EF160BD00A5C0C0 /* SiriNotes.xcdatamodeld in Sources */,
 				C89B09B41EF1A9F0003CA794 /* DatabaseHelper.swift in Sources */,
 				C8A218661EF160BD00A5C0C0 /* AppDelegate.swift in Sources */,
@@ -597,6 +601,7 @@
 				C89B09AE1EF17B6C003CA794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C89B09AF1EF17B6C003CA794 /* Build configuration list for PBXNativeTarget "SiriNotes_SiriExtension" */ = {
 			isa = XCConfigurationList;
@@ -605,6 +610,7 @@
 				C89B09B11EF17B6C003CA794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C8A2185D1EF160BD00A5C0C0 /* Build configuration list for PBXProject "SiriNotes" */ = {
 			isa = XCConfigurationList;

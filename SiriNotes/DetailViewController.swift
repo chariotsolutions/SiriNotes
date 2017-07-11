@@ -82,3 +82,33 @@ class DetailViewController: UIViewController {
 
 }
 
+extension DetailViewController: KeyCommandProvider {
+    var shortcutKeys: [UIKeyCommand] {
+        return [
+            UIKeyCommand(input: "d", modifierFlags: .command, action: #selector(handleShortcut(keyCommand:)), discoverabilityTitle: "Delete Note"),
+            UIKeyCommand(input: "\u{8}", modifierFlags: [], action: #selector(handleShortcut(keyCommand:)), discoverabilityTitle: "Delete Note")
+        ]
+    }
+    
+    @objc func handleShortcut(keyCommand: UIKeyCommand) -> Bool {
+        if (keyCommand.input == "d" && keyCommand.modifierFlags == .command) || (keyCommand.input == "\u{8}" && keyCommand.modifierFlags == []) {
+            if let note = detailItem {
+                managedObjectContext?.delete(note)
+                
+                do {
+                    try managedObjectContext?.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+                
+                detailItem = nil
+                configureView()
+            }
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
