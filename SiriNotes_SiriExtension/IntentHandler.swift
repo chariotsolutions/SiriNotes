@@ -27,10 +27,10 @@ class IntentHandler: INExtension {
 
 extension IntentHandler: INCreateNoteIntentHandling {
     
-    public func handle(createNote intent: INCreateNoteIntent, completion: @escaping (INCreateNoteIntentResponse) -> Swift.Void) {
+    public func handle(intent: INCreateNoteIntent, completion: @escaping (INCreateNoteIntentResponse) -> Swift.Void) {
         let context = DatabaseHelper.shared.persistentContainer.viewContext
         let newNote = Note(context: context)
-        newNote.title = intent.title
+        newNote.title = intent.title?.spokenPhrase
         newNote.details = intent.content?.description
         
         // Save the context.
@@ -47,14 +47,14 @@ extension IntentHandler: INCreateNoteIntentHandling {
         }
     }
     
-    public func confirm(createNote intent: INCreateNoteIntent, completion: @escaping (INCreateNoteIntentResponse) -> Swift.Void) {
+    public func confirm(intent: INCreateNoteIntent, completion: @escaping (INCreateNoteIntentResponse) -> Swift.Void) {
         completion(INCreateNoteIntentResponse(code: INCreateNoteIntentResponseCode.ready, userActivity: nil))
     }
     
     public func resolveTitle(forCreateNote intent: INCreateNoteIntent, with completion: @escaping (INStringResolutionResult) -> Swift.Void) {
         let result: INStringResolutionResult
         
-        if let title = intent.title, title.count > 0 {
+        if let title = intent.title?.spokenPhrase, title.count > 0 {
             result = INStringResolutionResult.success(with: title)
         } else {
             result = INStringResolutionResult.needsValue()
@@ -64,7 +64,7 @@ extension IntentHandler: INCreateNoteIntentHandling {
     }
     
     
-    public func resolveContent(forCreateNote intent: INCreateNoteIntent, with completion: @escaping (INNoteContentResolutionResult) -> Swift.Void) {
+    public func resolveContent(for intent: INCreateNoteIntent, with completion: @escaping (INNoteContentResolutionResult) -> Swift.Void) {
         let result: INNoteContentResolutionResult
         
         if let content = intent.content {
@@ -77,7 +77,7 @@ extension IntentHandler: INCreateNoteIntentHandling {
     }
     
     
-    public func resolveGroupName(forCreateNote intent: INCreateNoteIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Swift.Void) {
+    public func resolveGroupName(for intent: INCreateNoteIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Swift.Void) {
         completion(INSpeakableStringResolutionResult.notRequired())
     }
     
