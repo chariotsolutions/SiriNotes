@@ -46,6 +46,8 @@ class DetailViewController: UIViewController {
             titleTextField?.isHidden = true
             detailsTextView?.isHidden = true
         }
+        
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func viewDidLoad() {
